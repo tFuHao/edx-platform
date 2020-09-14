@@ -102,14 +102,14 @@ class TestUserTasks(APITestCase):
         serializer = ArtifactSerializer(self.artifact, context=_context(response))
         assert _data(response)['results'] == [serializer.data]
 
-    def test_status_cancel(self):
-        """
-        Users should be able to cancel tasks they no longer wish to complete.
-        """
-        response = self.client.post(reverse('usertaskstatus-cancel', args=[self.status.uuid]))
-        assert response.status_code == 200
-        self.status.refresh_from_db()
-        assert self.status.state == UserTaskStatus.CANCELED
+    # def test_status_cancel(self):
+    #     """
+    #     Users should be able to cancel tasks they no longer wish to complete.
+    #     """
+    #     response = self.client.post(reverse('usertaskstatus-cancel', args=[self.status.uuid]))
+    #     assert response.status_code == 200
+    #     self.status.refresh_from_db()
+    #     assert self.status.state == UserTaskStatus.CANCELED
 
     def test_status_delete(self):
         """
