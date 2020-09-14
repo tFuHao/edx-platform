@@ -62,7 +62,7 @@ def _data(response):
     return response.data
 
 
-@override_settings(BROKER_URL='memory://localhost/')
+@override_settings(CELERY_BROKER_URL='memory://localhost/')
 class TestUserTasks(APITestCase):
     """
     Tests of the django-user-tasks REST API endpoints.
