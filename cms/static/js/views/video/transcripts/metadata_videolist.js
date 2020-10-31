@@ -132,7 +132,6 @@ function($, Backbone, _, AbstractEditor, Utils, MessageManager) {
          */
         getVideoObjectsList: function() {
             var links = this.getValueFromEditor();
-
             return Utils.getVideoList(links);
         },
 

@@ -313,6 +313,7 @@ function(Backbone, BaseView, _, MetadataModel, AbstractEditor, FileUpload, Uploa
         templateName: 'metadata-list-entry',
 
         getValueFromEditor: function() {
+            alert(123123)
             return _.map(
                 this.$el.find('li input'),
                 function(ele) { return ele.value.trim(); }
@@ -619,6 +620,7 @@ function(Backbone, BaseView, _, MetadataModel, AbstractEditor, FileUpload, Uploa
         },
 
         setLicense: function() {
+            alert(123)
             this.model.setValue(this.licenseModel.toString());
             this.render();
         }

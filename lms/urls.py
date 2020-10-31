@@ -94,6 +94,8 @@ notification_prefs_urls = [
 
 
 urlpatterns = [
+    url(r'^qiniu/', include('lms.djangoapps.qiniu_storage.qiniu_storage.urls')),
+
     url(r'^$', branding_views.index, name='root'),  # Main marketing page, or redirect to courseware
 
     url(r'', include('student.urls')),
@@ -992,6 +994,11 @@ urlpatterns += make_docs_urls(api_info)
 urlpatterns += [
     url(r'', include('csrf.urls')),
 ]
+
+# edx-drf-extensions csrf app
+# urlpatterns += [
+#     url(r'qiniu', include('lms.djangoapps.qiniu_storage.qiniu_storage.urls')),
+# ]
 
 if 'openedx.testing.coverage_context_listener' in settings.INSTALLED_APPS:
     urlpatterns += [

@@ -72,6 +72,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         % else:
             <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
         % endif
+
+        ## Translators: This is short for "System administration".
+        <a class="btn" href="qiniu">${_("123456")}</a>
     </div>
     <div class="mobile-menu hidden" aria-label=${_("More Options")} role="menu" id="mobile-menu"></div>
 </header>

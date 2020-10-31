@@ -1014,6 +1014,27 @@ PIPELINE = {
     'YUI_BINARY': 'yui-compressor',
 }
 
+############################### QINIU #######################################
+# QINIU_ACCESS_KEY = 'pJQPlp30YIPO5MHKphN-GQXHdQ638iIp7aPOIxzJ'
+# QINIU_SECRET_KEY = '2e8WR1luGyGNxkVoYKYATKiQOZ5FeLhrjat1lOIm'
+# QINIU_BUCKET_NAME = 'edx'
+# QINIU_BUCKET_DOMAIN = 'qf6qoxxhz.hn-bkt.clouddn.com'
+# QINIU_PIPELINE_NAME = '123456'
+
+# PREFIX_URL = 'http://'
+
+# MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+# DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
+# # MEDIA_ROOT = QINIU_BUCKET_DOMAIN
+
+# # 静态文件的url配置
+# STATIC_URL = QINIU_BUCKET_DOMAIN + '/static/'
+# # 静态文件的存储引擎
+# STATICFILES_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
+
+
+
+
 STATICFILES_STORAGE = 'openedx.core.storage.ProductionStorage'
 STATICFILES_STORAGE_KWARGS = {}
 
@@ -1495,6 +1516,9 @@ INSTALLED_APPS = [
     # Management of per-user schedules
     'openedx.core.djangoapps.schedules',
     'rest_framework_jwt',
+
+    'qiniu_storage.qiniu_storage',
+    # 'qiniustorage'
 ]
 
 
@@ -1665,7 +1689,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 UPLOAD_CHUNK_SIZE_IN_MB = 10
 
 ### Max size of asset uploads to GridFS
-MAX_ASSET_UPLOAD_FILE_SIZE_IN_MB = 10
+MAX_ASSET_UPLOAD_FILE_SIZE_IN_MB = 1000
 
 # FAQ url to direct users to if they upload
 # a file that exceeds the above size

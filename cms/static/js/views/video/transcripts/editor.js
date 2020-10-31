@@ -85,6 +85,7 @@ function($, Backbone, _, Utils, MetadataView, MetadataCollection) {
         *
         */
         syncBasicTab: function(metadataCollection, metadataView) {
+            // this.handleFieldChanged();
             var result = [],
                 getField = Utils.getField,
                 component_locator = this.$el.closest('[data-locator]').data('locator'),
@@ -146,9 +147,9 @@ function($, Backbone, _, Utils, MetadataView, MetadataCollection) {
         *
         */
         syncAdvancedTab: function(metadataCollection, metadataView) {
+            // this.handleFieldChanged();
             var getField = Utils.getField,
                 html5Sources, youtube, videoUrlValue, result;
-
             // if metadataCollection is not passed, just exit.
             if (!metadataCollection) {
                 return false;
@@ -162,8 +163,7 @@ function($, Backbone, _, Utils, MetadataView, MetadataCollection) {
 
             // Get value from `Basic` tab `VideoUrl` field that should be
             // synchronized.
-            videoUrlValue = getField(this.collection, 'video_url')
-                                .getDisplayValue();
+            videoUrlValue = getField(this.collection, 'video_url').getDisplayValue();
 
             // Change list representation format to more convenient and group
             // them by mode (`youtube`, `html5`).
@@ -219,6 +219,7 @@ function($, Backbone, _, Utils, MetadataView, MetadataCollection) {
          * Event handler for `transcripts:basicTabFieldChanged` event.
          */
         handleFieldChanged: function() {
+            // var eleeeeee = document.getElementsByClassName('videolist-url')[0]
             var views = this.settingsView.views,
                 videoURLSView = views.video_url,
                 edxVideoIdView = views.edx_video_id,
@@ -226,6 +227,7 @@ function($, Backbone, _, Utils, MetadataView, MetadataCollection) {
                 videoURLsData = videoURLSView.getVideoObjectsList(),
                 data = videoURLsData.concat(edxVideoIdData),
                 locator = this.getLocator();
+
 
             Utils.command('check', locator, data)
                 .done(function(response) {

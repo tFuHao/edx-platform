@@ -95,6 +95,11 @@ from openedx.core.release import RELEASE_LINE
 
     <script type="text/javascript" src="${static.url("cms/js/require-config.js")}"></script>
 
+    <script type="text/javascript" src="${static.url("js/qiniu_upload/plupload/moxie.min.js")}"></script>
+    <script type="text/javascript" src="${static.url("js/qiniu_upload/plupload/plupload.min.js")}"></script>    
+    <!-- <script type="text/javascript" src="${static.url("js/qiniu_upload/qiniu.min.js")}"></script> -->
+    <!-- <script type="text/javascript" src="${static.url("js/views/video/transcripts/editor.js")}"></script> -->
+    
     <!-- view -->
     <div class="wrapper wrapper-view" dir="${static.dir_rtl()}">
       <% online_help_token = self.online_help_token() if hasattr(self, 'online_help_token') else None %>

@@ -50,7 +50,25 @@ FEATURES['PREVIEW_LMS_BASE'] = "preview." + LMS_BASE
 
 # Skip packaging and optimization in development
 PIPELINE['PIPELINE_ENABLED'] = False
-STATICFILES_STORAGE = 'openedx.core.storage.DevelopmentStorage'
+# STATICFILES_STORAGE = 'openedx.core.storage.DevelopmentStorage'
+
+############################### QINIU #######################################
+QINIU_ACCESS_KEY = 'pJQPlp30YIPO5MHKphN-GQXHdQ638iIp7aPOIxzJ'
+QINIU_SECRET_KEY = '2e8WR1luGyGNxkVoYKYATKiQOZ5FeLhrjat1lOIm'
+QINIU_BUCKET_NAME = 'edx'
+QINIU_BUCKET_DOMAIN = 'qgqlqbesl.hd-bkt.clouddn.com'
+QINIU_PIPELINE_NAME = '123456'
+
+# PREFIX_URL = 'http://'
+
+# MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+# # DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
+# MEDIA_ROOT = QINIU_BUCKET_DOMAIN
+
+# # # 静态文件的url配置
+# STATIC_URL = QINIU_BUCKET_DOMAIN +'/'# + '/static/'
+# 静态文件的存储引擎
+# STATICFILES_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
 
 # Revert to the default set of finders as we don't want the production pipeline
 STATICFILES_FINDERS = [
@@ -78,38 +96,38 @@ CELERY_ALWAYS_EAGER = True
 
 ################################ DEBUG TOOLBAR ################################
 
-INSTALLED_APPS += ['debug_toolbar']
+# INSTALLED_APPS += ['debug_toolbar']
 
-MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-INTERNAL_IPS = ('127.0.0.1',)
+# MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+# INTERNAL_IPS = ('127.0.0.1',)
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.profiling.ProfilingPanel',
-)
+# DEBUG_TOOLBAR_PANELS = (
+#     'debug_toolbar.panels.versions.VersionsPanel',
+#     'debug_toolbar.panels.timer.TimerPanel',
+#     'debug_toolbar.panels.settings.SettingsPanel',
+#     'debug_toolbar.panels.headers.HeadersPanel',
+#     'debug_toolbar.panels.request.RequestPanel',
+#     'debug_toolbar.panels.sql.SQLPanel',
+#     'debug_toolbar.panels.signals.SignalsPanel',
+#     'debug_toolbar.panels.logging.LoggingPanel',
+#     'debug_toolbar.panels.profiling.ProfilingPanel',
+# )
 
-DEBUG_TOOLBAR_CONFIG = {
-    # Profile panel is incompatible with wrapped views
-    # See https://github.com/jazzband/django-debug-toolbar/issues/792
-    'DISABLE_PANELS': (
-        'debug_toolbar.panels.profiling.ProfilingPanel',
-    ),
-    'SHOW_TOOLBAR_CALLBACK': 'cms.envs.devstack.should_show_debug_toolbar',
-}
+# DEBUG_TOOLBAR_CONFIG = {
+#     # Profile panel is incompatible with wrapped views
+#     # See https://github.com/jazzband/django-debug-toolbar/issues/792
+#     'DISABLE_PANELS': (
+#         'debug_toolbar.panels.profiling.ProfilingPanel',
+#     ),
+#     'SHOW_TOOLBAR_CALLBACK': 'cms.envs.devstack.should_show_debug_toolbar',
+# }
 
 
-def should_show_debug_toolbar(request):
-    # We always want the toolbar on devstack unless running tests from another Docker container
-    if request.get_host().startswith('edx.devstack.studio:'):
-        return False
-    return True
+# def should_show_debug_toolbar(request):
+#     # We always want the toolbar on devstack unless running tests from another Docker container
+#     if request.get_host().startswith('edx.devstack.studio:'):
+#         return False
+#     return True
 
 
 ################################ MILESTONES ################################

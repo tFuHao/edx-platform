@@ -42,6 +42,8 @@ COURSELIKE_KEY_PATTERN = r'(?P<course_key_string>({}|{}))'.format(
 LIBRARY_KEY_PATTERN = r'(?P<library_key_string>library-v1:[^/+]+\+[^/+]+)'
 
 urlpatterns = [
+    url(r'^qiniu/', include('cms.djangoapps.qiniu_storage.qiniu_storage.urls')),
+
     url(r'', include('openedx.core.djangoapps.user_authn.urls_common')),
     url(r'', include('student.urls')),
     url(r'^transcripts/upload$', contentstore.views.upload_transcripts, name='upload_transcripts'),

@@ -1,8 +1,8 @@
 <div class="wrapper-comp-setting metadata-videolist-enum">
   <label class="label setting-label" for="<%= uniqueId %>"><%= model.get('display_name')%></label>
   <div class="wrapper-videolist-settings">
-    <div class="wrapper-videolist-url videolist-settings-item"><input type="text" id="<%= uniqueId %>"  class="input videolist-url" value="<%= model.get('value')[0] %>"></div>
-    <div class="tip videolist-url-tip setting-help"><%= model.get('help') %></div>
+    <div class="wrapper-videolist-url videolist-settings-item"><input type="file" onchange="upload_file(this)" class="videoimage-file" accept="video/mp4" style="float:left;height:44px;padding-top:7px;"><span style="padding-left:15px;line-height:40px;" id="overlay_ptxt"></span><input type="text"  style="float:right;width:none!important;"id="<%= uniqueId %>"  class="input videolist-url" autofocus="autofocus" keyup="bankCardKeyup" value="<%= model.get('value')[0] %>"></div>
+    <div class="tip videolist-url-tip setting-help" style="clear:both;margin-top:50px;"><%= model.get('help') %></div>
     <div class="wrapper-videolist-urls">
       <a href="#" class="collapse-action collapse-setting">
         <span class="icon fa fa-plus" aria-hidden="true"></span><%= gettext("Add URLs for additional versions") %> <span class="sr"><%= model.get('display_name')%></span>
@@ -24,4 +24,7 @@
 <div class="transcripts-status is-invisible">
     <label class="label setting-label transcripts-label"><%= gettext("Default Timed Transcript") %></label>
     <div class="wrapper-transcripts-message"></div>
+</div>
+<div class="overlay">
+  <div class="overlay_txt""></div>
 </div>
